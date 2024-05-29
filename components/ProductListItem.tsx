@@ -1,21 +1,18 @@
+import React from "react";
 import { StyleSheet, Image } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import Colors from "@/constants/Colors";
-import products from "@/assets/data/products";
-import ProductListItem from "@/components/ProductListItem";
 
-// const product = products[0];
-
-export default function TabOneScreen() {
+const ProductListItem = ({ product }: any) => {
   return (
     <View style={styles.container}>
-      {products.map((product, index) => (
-        <ProductListItem key={index} product={product} />
-      ))}
+      <Image source={{ uri: product.image }} style={styles.image} />
+      <Text style={styles.title}>{product.name}</Text>
+      <Text style={styles.price}>${product.price}</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -37,3 +34,5 @@ const styles = StyleSheet.create({
     color: Colors.light.tint,
   },
 });
+
+export default ProductListItem;
